@@ -2,6 +2,7 @@ PATH
   remote: .
   specs:
     linda-socket.io-client (0.0.1)
+      event_emitter
       socket.io-client-simple
 
 GEM

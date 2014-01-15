@@ -22,4 +22,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rake"
 
   spec.add_dependency "socket.io-client-simple"
+  spec.add_dependency "event_emitter"
 end
