@@ -2,22 +2,28 @@ module Linda
   module SocketIO
     module Client
 
+      def self.connect(url_or_io)
+        ::Linda::SocketIO::Client::Client.new(url_or_io)
+      end
+
       class Client
 
-        attr_reader :io, :url
+        attr_reader :io
 
         def initialize(url_or_io)
           if url_or_io.kind_of? String
-            @url = url_or_io
+            @io = ::SocketIO::Client::Simple.connect url_or_io
           elsif url_or_io.kind_of? ::SocketIO::Client::Simple::Client
             @io = url_or_io
-            @url = @io.url
           end
-          @io = ::SocketIO::Client::Simple.connect @url
         end
 
         def tuplespace(name)
           TupleSpace.new(self, name.to_s)
+        end
+
+        def url
+          @io.url
         end
 
       end
