@@ -7,11 +7,12 @@
   "homepage": "https://github.com/node-linda/linda-socket.io-client-ruby",
   "dependencies": {
     "socket.io": "~0.9.16",
-    "linda-socket.io": "~0.1.5"
+    "linda-socket.io": "~0.1.5",
+    "coffee-script": "~1.6.3"
   },
   "devDependencies": {},
   "scripts": {
-    "start": "node samples/linda_server.js"
+    "start": "./node_modules/coffee-script/bin/coffee samples/linda_server.coffee"
   },
   "repository": {
     "type": "git",
