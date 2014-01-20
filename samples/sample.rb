@@ -8,17 +8,18 @@ ts = linda.tuplespace('test')
 linda.io.on :connect do
   puts "connect!! #{linda.url}"
 
-  ts.watch :type => "chat" do |err, tuple|
-    p tuple["data"]
+  ts.watch type: "chat" do |err, tuple|
+    msg = tuple["data"]["msg"]
+    puts "> #{msg}"
   end
-
 end
 
 linda.io.on :disconnect do
   puts "disconnect"
 end
 
-loop do
-  ts.write :type => "chat", :msg => "hello hello", :at => Time.now
-  sleep 1
+while line = STDIN.gets
+  line.strip!
+  next if line.empty?
+  ts.write(type: "chat", msg: line, at: Time.now)
 end
