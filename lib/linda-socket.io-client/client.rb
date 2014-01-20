@@ -46,6 +46,22 @@ module Linda
 
         def take(tuple, &block)
           return unless block_given?
+          id = create_callback_id
+          name = "__linda_take_#{id}"
+          io_cid = @linda.io.once name, &block
+          @io_callbacks.push :name => name, :callback_id => io_cid
+          @linda.io.emit '__linda_take', {:tuplespace => @name, :tuple => tuple, :id => id}
+          return id
+        end
+
+        def read(tuple, &block)
+          return unless block_given?
+          id = create_callback_id
+          name = "__linda_read_#{id}"
+          io_cid = @linda.io.once name, &block
+          @io_callbacks.push :name => name, :callback_id => io_cid
+          @linda.io.emit '__linda_read', {:tuplespace => @name, :tuple => tuple, :id => id}
+          return id
         end
 
         def watch(tuple, &block)

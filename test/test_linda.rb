@@ -43,7 +43,52 @@ class TestLindaClient < MiniTest::Test
       ts.write write_data
       ts.write foo: "foo", name: "ymrl"
     end
+    sleep 0.5
+    assert_equal results, [write_data]
+  end
 
+  def test_read_before_write
+    results = []
+    client = create_client
+    write_data = {"foo" => "bar", "at" => Time.now.to_s}
+
+    client.io.on :connect do
+      ts = client.tuplespace("test_read")
+      ts.read foo: "bar" do |err, tuple|
+        next if err
+        results.push tuple["data"]
+      end
+      ts.read foo: "bar" do |err, tuple|
+        next if err
+        results.push tuple["data"]
+      end
+      ts.write a: "b", name: "shokai"
+      ts.write write_data
+      ts.write foo: "foo", name: "ymrl"
+    end
+    sleep 0.5
+    assert_equal results, [write_data, write_data]
+  end
+
+  def test_take_before_write
+    results = []
+    client = create_client
+    write_data = {"foo" => "bar", "at" => Time.now.to_s}
+
+    client.io.on :connect do
+      ts = client.tuplespace("test_take")
+      ts.take foo: "bar" do |err, tuple|
+        next if err
+        results.push tuple["data"]
+      end
+      ts.take foo: "bar" do |err, tuple|
+        next if err
+        results.push tuple["data"]
+      end
+      ts.write a: "b", name: "shokai"
+      ts.write write_data
+      ts.write foo: "foo", name: "ymrl"
+    end
     sleep 0.5
     assert_equal results, [write_data]
   end
