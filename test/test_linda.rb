@@ -93,4 +93,60 @@ class TestLindaClient < MiniTest::Test
     assert_equal results, [write_data]
   end
 
+  def test_watch_cancel
+    results = []
+    client = create_client
+    write_data = {"foo" => "bar", "at" => Time.now}
+
+    client.io.on :connect do
+      ts = client.tuplespace("test_watch_cancel")
+      id = ts.watch foo: "bar" do |err, tuple|
+        next if err
+        results.push tuple["data"]
+      end
+      ts.cancel id
+      ts.write write_data
+    end
+    sleep 0.5
+    assert_equal results, []
+  end
+
+  def test_read_cancel
+    results = []
+    client = create_client
+    write_data = {"foo" => "bar", "at" => Time.now}
+
+    client.io.on :connect do
+      ts = client.tuplespace("test_read_cancel")
+      cid = ts.read foo: "bar" do |err, tuple|
+        next if err
+        results.push tuple["data"]
+      end
+      ts.cancel cid
+      ts.write write_data
+    end
+    sleep 0.5
+    assert_equal results, []
+    assert_equal client.io.__events.select{|e|e[:type].to_s =~ /read/}.size, 0
+  end
+
+  def test_take_cancel
+    results = []
+    client = create_client
+    write_data = {"foo" => "bar", "at" => Time.now}
+
+    client.io.on :connect do
+      ts = client.tuplespace("test_take_cancel")
+      cid = ts.take foo: "bar" do |err, tuple|
+        next if err
+        results.push tuple["data"]
+      end
+      ts.cancel cid
+      ts.write write_data
+    end
+    sleep 0.5
+    assert_equal results, []
+    assert_equal client.io.__events.select{|e|e[:type].to_s =~ /take/}.size, 0
+  end
+
 end
