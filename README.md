@@ -2,6 +2,9 @@
 
 TODO: Write a gem description
 
+[![Travis-CI build status](https://travis-ci.org/node-linda/linda-socket.io-client-ruby.png)](https://travis-ci.org/node-linda/linda-socket.io-client-ruby)
+
+
 ## Installation
 
 Add this line to your application's Gemfile:
