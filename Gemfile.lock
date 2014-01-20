@@ -4,7 +4,7 @@ PATH
     linda-socket.io-client (0.0.1)
       event_emitter
       json
-      socket.io-client-simple
+      socket.io-client-simple (>= 0.0.3)
 
 GEM
   remote: https://rubygems.org/
@@ -14,6 +14,7 @@ GEM
       json (~> 1.8)
       multi_xml (>= 0.5.2)
     json (1.8.1)
+    minitest (5.2.1)
     multi_xml (0.5.5)
     rake (10.1.1)
     socket.io-client-simple (0.0.3)
@@ -32,4 +33,5 @@ PLATFORMS
 DEPENDENCIES
   bundler (~> 1.3)
   linda-socket.io-client!
+  minitest
   rake
