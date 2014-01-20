@@ -1,0 +1,23 @@
+{
+  "name": "linda-socket.io-client-ruby",
+  "description": "Ruby client for linda-socket.io",
+  "private": true,
+  "author": "Sho Hashimoto <hashimoto@shokai.org>",
+  "license": "MIT",
+  "homepage": "https://github.com/node-linda/linda-socket.io-client-ruby",
+  "dependencies": {
+    "socket.io": "~0.9.16",
+    "linda-socket.io": "~0.1.5"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "node samples/linda_server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/node-linda/linda-socket.io-client-ruby.git"
+  },
+  "bugs": {
+    "url": "https://github.com/node-linda/linda-socket.io-client-ruby/issues"
+  }
+}
