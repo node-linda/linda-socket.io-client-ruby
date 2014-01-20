@@ -16,4 +16,15 @@ class TestLindaClient < MiniTest::Test
     assert result
   end
 
+  def test_socketio_client_wrap
+    socket = SocketIO::Client::Simple.connect TestServer.url
+    linda = Linda::SocketIO::Client.connect socket
+    result = false
+    linda.io.on :connect do
+      result = true
+    end
+    sleep 0.5
+    assert result
+  end
+
 end
