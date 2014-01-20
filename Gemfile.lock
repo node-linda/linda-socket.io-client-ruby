@@ -3,6 +3,7 @@ PATH
   specs:
     linda-socket.io-client (0.0.1)
       event_emitter
+      json
       socket.io-client-simple
 
 GEM
@@ -15,13 +16,13 @@ GEM
     json (1.8.1)
     multi_xml (0.5.5)
     rake (10.1.1)
-    socket.io-client-simple (0.0.1)
+    socket.io-client-simple (0.0.3)
       event_emitter
       httparty
       json
-      websocket-client-simple
+      websocket-client-simple (>= 0.0.6)
     websocket (1.1.2)
-    websocket-client-simple (0.0.5)
+    websocket-client-simple (0.0.6)
       event_emitter
       websocket
 
