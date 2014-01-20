@@ -2,8 +2,9 @@ require File.expand_path 'test_helper', File.dirname(__FILE__)
 
 class TestLindaClient < MiniTest::Test
 
-  def setup
-    TestServer.start
+  def create_client
+    socket = SocketIO::Client::Simple.connect TestServer.url
+    Linda::SocketIO::Client.connect socket
   end
 
   def test_connect
@@ -25,6 +26,26 @@ class TestLindaClient < MiniTest::Test
     end
     sleep 0.5
     assert result
+  end
+
+  def test_write_watch
+    results = []
+    client = create_client
+    write_data = {"foo" => "bar", "at" => Time.now.to_s}
+
+    client.io.on :connect do
+      ts = client.tuplespace("test_write_watch")
+      ts.watch foo: "bar" do |err, tuple|
+        next if err
+        results.push tuple["data"]
+      end
+      ts.write a: "b", name: "shokai"
+      ts.write write_data
+      ts.write foo: "foo", name: "ymrl"
+    end
+
+    sleep 0.5
+    assert_equal results, [write_data]
   end
 
 end

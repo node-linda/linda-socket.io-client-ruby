@@ -44,7 +44,7 @@ module Linda
           @linda.io.emit '__linda_write', data
         end
 
-        def take(tupoe, &block)
+        def take(tuple, &block)
           return unless block_given?
         end
 
