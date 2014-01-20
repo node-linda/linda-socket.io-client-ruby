@@ -36,7 +36,6 @@ module Linda
           @name = name
           @linda = linda
           @watch_callback_ids = {}
-          @io_callbacks = []
         end
 
         def write(tuple, opts={})
@@ -49,7 +48,6 @@ module Linda
           id = create_callback_id
           name = "__linda_take_#{id}"
           io_cid = @linda.io.once name, &block
-          @io_callbacks.push :name => name, :callback_id => io_cid
           @linda.io.emit '__linda_take', {:tuplespace => @name, :tuple => tuple, :id => id}
           return id
         end
@@ -59,7 +57,6 @@ module Linda
           id = create_callback_id
           name = "__linda_read_#{id}"
           io_cid = @linda.io.once name, &block
-          @io_callbacks.push :name => name, :callback_id => io_cid
           @linda.io.emit '__linda_read', {:tuplespace => @name, :tuple => tuple, :id => id}
           return id
         end
@@ -69,9 +66,12 @@ module Linda
           id = create_watch_callback_id tuple
           name  = "__linda_watch_#{id}"
           io_cid = @linda.io.on name, &block
-          @io_callbacks.push :name => name, :callback_id => io_cid
           @linda.io.emit '__linda_watch', {:tuplespace => @name, :tuple => tuple, :id => id}
           return id
+        end
+
+        def cancel(id)
+          @linda.io.emit '__linda_cancel', {:tuplespace => @name, :id => id}
         end
 
         private
