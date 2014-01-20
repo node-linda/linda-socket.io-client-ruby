@@ -17,7 +17,7 @@ GEM
     minitest (5.2.1)
     multi_xml (0.5.5)
     rake (10.1.1)
-    socket.io-client-simple (0.0.3)
+    socket.io-client-simple (0.0.4)
       event_emitter
       httparty
       json

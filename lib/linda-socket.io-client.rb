@@ -9,11 +9,6 @@ require 'socket.io-client-simple'
 module Linda
  module SocketIO
     module Client
-
-      def self.connect(url_or_io)
-        Linda::SocketIO::Client::Client.new(url_or_io)
-      end
-
     end
   end
 end
