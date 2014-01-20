@@ -16,6 +16,11 @@ linda.on 'write', (data) ->
 linda.on 'watch', (data) ->
   console.log "watch tuple - #{JSON.stringify data}"
 
-port = process.argv[2]-0 || 3000
+port = (process.env.PORT || 3000) - 0
 app.listen port
 console.log "server start - port:#{port}"
+
+if process.env.EXIT_AT?
+  setTimeout ->
+    process.exit()
+  , process.env.EXIT_AT-0
