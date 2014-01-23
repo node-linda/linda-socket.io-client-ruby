@@ -25,8 +25,7 @@ linda.io.on :connect do
 
   ts.watch type: "chat" do |err, tuple|
     next if err
-    msg = tuple["data"]["msg"]
-    puts "> #{msg}"
+    puts "> #{tuple.data.msg} (from:#{tuple.from})"
   end
 end
 

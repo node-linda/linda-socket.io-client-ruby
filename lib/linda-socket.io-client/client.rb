@@ -6,6 +6,9 @@ module Linda
         ::Linda::SocketIO::Client::Client.new(url_or_io)
       end
 
+      class Tuple < ::Hashie::Mash
+      end
+
       class Client
 
         attr_reader :io
@@ -47,7 +50,9 @@ module Linda
           return unless block_given?
           id = create_callback_id
           name = "__linda_take_#{id}"
-          io_cid = @linda.io.once name, &block
+          io_cid = @linda.io.once name do |err, tuple|
+            block.call err, Tuple.new(tuple)
+          end
           @linda.io.emit '__linda_take', {:tuplespace => @name, :tuple => tuple, :id => id}
           return id
         end
@@ -56,7 +61,9 @@ module Linda
           return unless block_given?
           id = create_callback_id
           name = "__linda_read_#{id}"
-          io_cid = @linda.io.once name, &block
+          io_cid = @linda.io.once name do |err, tuple|
+            block.call err, Tuple.new(tuple)
+          end
           @linda.io.emit '__linda_read', {:tuplespace => @name, :tuple => tuple, :id => id}
           return id
         end
@@ -65,7 +72,9 @@ module Linda
           return unless block_given?
           id = create_watch_callback_id tuple
           name  = "__linda_watch_#{id}"
-          io_cid = @linda.io.on name, &block
+          io_cid = @linda.io.on name do |err, tuple|
+            block.call err, Tuple.new(tuple)
+          end
           @linda.io.emit '__linda_watch', {:tuplespace => @name, :tuple => tuple, :id => id}
           return id
         end

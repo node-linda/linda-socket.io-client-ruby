@@ -23,6 +23,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "minitest"
 
   spec.add_dependency "json"
+  spec.add_dependency "hashie"
   spec.add_dependency "event_emitter"
   spec.add_dependency "socket.io-client-simple", '>= 0.0.3'
 end

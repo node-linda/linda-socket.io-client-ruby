@@ -37,7 +37,7 @@ class TestLindaClient < MiniTest::Test
       ts = client.tuplespace("test_write_watch")
       ts.watch foo: "bar" do |err, tuple|
         next if err
-        results.push tuple["data"]
+        results.push tuple.data
       end
       ts.write a: "b", name: "shokai"
       ts.write write_data
@@ -56,11 +56,11 @@ class TestLindaClient < MiniTest::Test
       ts = client.tuplespace("test_read")
       ts.read foo: "bar" do |err, tuple|
         next if err
-        results.push tuple["data"]
+        results.push tuple.data
       end
       ts.read foo: "bar" do |err, tuple|
         next if err
-        results.push tuple["data"]
+        results.push tuple.data
       end
       ts.write a: "b", name: "shokai"
       ts.write write_data
@@ -79,11 +79,11 @@ class TestLindaClient < MiniTest::Test
       ts = client.tuplespace("test_take")
       ts.take foo: "bar" do |err, tuple|
         next if err
-        results.push tuple["data"]
+        results.push tuple.data
       end
       ts.take foo: "bar" do |err, tuple|
         next if err
-        results.push tuple["data"]
+        results.push tuple.data
       end
       ts.write a: "b", name: "shokai"
       ts.write write_data
@@ -102,7 +102,7 @@ class TestLindaClient < MiniTest::Test
       ts = client.tuplespace("test_watch_cancel")
       id = ts.watch foo: "bar" do |err, tuple|
         next if err
-        results.push tuple["data"]
+        results.push tuple.data
       end
       ts.cancel id
       ts.write write_data
@@ -120,7 +120,7 @@ class TestLindaClient < MiniTest::Test
       ts = client.tuplespace("test_read_cancel")
       cid = ts.read foo: "bar" do |err, tuple|
         next if err
-        results.push tuple["data"]
+        results.push tuple.data
       end
       ts.cancel cid
       ts.write write_data
@@ -139,7 +139,7 @@ class TestLindaClient < MiniTest::Test
       ts = client.tuplespace("test_take_cancel")
       cid = ts.take foo: "bar" do |err, tuple|
         next if err
-        results.push tuple["data"]
+        results.push tuple.data
       end
       ts.cancel cid
       ts.write write_data
