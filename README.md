@@ -2,7 +2,7 @@
 
 - Ruby client for [linda-socket.io](https://github.com/node-linda/linda-socket.io)
 
-[![Travis-CI build status](https://travis-ci.org/node-linda/linda-socket.io-client-ruby.png)](https://travis-ci.org/node-linda/linda-socket.io-client-ruby)
+[![Travis-CI build status](https://travis-ci.org/node-linda/linda-socket.io-client-ruby.png?branch=master)](https://travis-ci.org/node-linda/linda-socket.io-client-ruby)
 
 
 ## Installation
