@@ -1,11 +1,15 @@
-=== 0.0.3 2014-1-24
+=== 0.0.4 2014-04-09
+
+* catch ":error" event in sample
+
+=== 0.0.3 2014-01-24
 
 * remove Socket.IO callbacks on IO closed  #3
 
-=== 0.0.2 2014-1-24
+=== 0.0.2 2014-01-24
 
 * wrap return value of TupleSpace#read/take/watch by Hashie::Mash  #2
 
-=== 0.0.1 2014-1-21
+=== 0.0.1 2014-01-21
 
 * first release
