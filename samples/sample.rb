@@ -18,6 +18,10 @@ linda.io.on :disconnect do
   puts "disconnect"
 end
 
+linda.io.on :error do |err|
+  p err
+end
+
 while line = STDIN.gets
   line.strip!
   next if line.empty?
