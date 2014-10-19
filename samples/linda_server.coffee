@@ -5,10 +5,8 @@ http = require 'http'
 
 app = http.createServer()
 io = require('socket.io').listen(app)
-io.configure 'development', ->
-  ## io.set 'log level', 2
 
-linda = require('linda-socket.io').Linda.listen(io: io, server: app)
+linda = require('linda').Server.listen(io: io, server: app)
 
 linda.on 'write', (data) ->
   console.log "write tuple - #{JSON.stringify data}"

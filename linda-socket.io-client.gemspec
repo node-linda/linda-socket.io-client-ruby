@@ -8,7 +8,7 @@ Gem::Specification.new do |spec|
   spec.version       = Linda::SocketIO::Client::VERSION
   spec.authors       = ["Sho Hashimoto"]
   spec.email         = ["hashimoto@shokai.org"]
-  spec.description   = %q{linda-socket.io client for Ruby}
+  spec.description   = %q{node-linda client for Ruby}
   spec.summary       = spec.description
   spec.homepage      = "https://github.com/node-linda/linda-socket.io-client-ruby"
   spec.license       = "MIT"
@@ -25,5 +25,5 @@ Gem::Specification.new do |spec|
   spec.add_dependency "json"
   spec.add_dependency "hashie"
   spec.add_dependency "event_emitter"
-  spec.add_dependency "socket.io-client-simple", '>= 0.0.5'
+  spec.add_dependency "socket.io-client-simple", '>= 1.1.2'
 end

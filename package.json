@@ -6,9 +6,9 @@
   "license": "MIT",
   "homepage": "https://github.com/node-linda/linda-socket.io-client-ruby",
   "dependencies": {
-    "socket.io": "~0.9.16",
-    "linda-socket.io": "~0.2.0",
-    "coffee-script": "~1.6.3"
+    "socket.io": "^1.1",
+    "linda": "^1.2",
+    "coffee-script": "^1.8"
   },
   "devDependencies": {},
   "scripts": {

@@ -5,27 +5,27 @@ PATH
       event_emitter
       hashie
       json
-      socket.io-client-simple (>= 0.0.5)
+      socket.io-client-simple (>= 1.1.2)
 
 GEM
   remote: https://rubygems.org/
   specs:
     event_emitter (0.2.5)
-    hashie (2.1.0)
+    hashie (3.3.1)
     httparty (0.13.1)
       json (~> 1.8)
       multi_xml (>= 0.5.2)
     json (1.8.1)
-    minitest (5.3.2)
+    minitest (5.4.2)
     multi_xml (0.5.5)
-    rake (10.2.2)
-    socket.io-client-simple (0.0.5)
+    rake (10.3.2)
+    socket.io-client-simple (1.1.2)
       event_emitter
       httparty
       json
-      websocket-client-simple (>= 0.0.9)
-    websocket (1.1.2)
-    websocket-client-simple (0.0.9)
+      websocket-client-simple (>= 0.2.1)
+    websocket (1.2.1)
+    websocket-client-simple (0.2.1)
       event_emitter
       websocket
 
