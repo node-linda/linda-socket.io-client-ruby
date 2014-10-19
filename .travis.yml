@@ -1,8 +1,11 @@
 language: ruby
 node_js:
-  - "0.10"
+  - '0.10'
 rvm:
-  - "2.0.0"
-  - "2.1.2"
+  - '2.0.0'
+  - '2.1.2'
 before_script:
   - npm install
+notifications:
+  slack:
+    secure: PYQA12LqI5HDWolSt7EHn48YwKQ2NTeQk3gWAPHdjH8CSX19QCXBTLvfgSFq0ynTu3NiumAHGgYMecdbVUtMlbS22hf70xwN2Qa2+Du1B+kNugkivtcX+srL0cXbi7sSwq+MxypBwdnZovTTPvtVKyPeN3cLn1/my55qZT9RxCA=
