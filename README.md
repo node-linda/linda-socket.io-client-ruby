@@ -1,6 +1,8 @@
 # Linda::SocketIO::Client
 
 - Ruby client for [node-linda](https://github.com/node-linda/linda)
+- https://github.com/node-linda/linda-socket.io-client-ruby
+- http://rubygems.org/gems/linda-socket.io-client
 
 [![Travis-CI build status](https://travis-ci.org/node-linda/linda-socket.io-client-ruby.png?branch=master)](https://travis-ci.org/node-linda/linda-socket.io-client-ruby)
 
