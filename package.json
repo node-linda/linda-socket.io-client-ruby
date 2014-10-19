@@ -12,7 +12,7 @@
   },
   "devDependencies": {},
   "scripts": {
-    "start": "./node_modules/coffee-script/bin/coffee samples/linda_server.coffee"
+    "start": "coffee samples/linda_server.coffee"
   },
   "repository": {
     "type": "git",
